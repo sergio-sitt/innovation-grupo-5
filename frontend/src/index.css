@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 262 83% 58%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-[#0F172A] text-slate-50 antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .font-display {
+    font-family: 'Outfit', sans-serif;
+  }
+  .font-mono, code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  ::selection {
+    background: rgba(37, 99, 235, 0.4);
+    color: #F8FAFC;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B1222;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2563EB;
+  }
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 40px #0B1222 inset;
+    -webkit-text-fill-color: #F8FAFC;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-[12px] shadow-xl shadow-black/40;
+  }
+  .glass-card-hover {
+    @apply transition-all duration-300 hover:bg-slate-900/80 hover:border-indigo-500/50 hover:shadow-indigo-500/10;
+  }
+  .input-tactical {
+    @apply bg-slate-950/70 border border-slate-800 rounded-[8px] text-slate-100 placeholder:text-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all duration-200;
+  }
+  .badge-tactical {
+    @apply inline-flex items-center gap-1.5 rounded-[6px] px-2 py-0.5 text-xs font-semibold;
+  }
+}
+
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-x 46s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes radar-spin {
+  to { transform: rotate(360deg); }
+}
+.radar-sweep {
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(59,130,246,0.14) 40deg, transparent 80deg);
+  animation: radar-spin 7s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.55); opacity: 0.9; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 1.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.blink-dot {
+  animation: blink-dot 1.4s ease-in-out infinite;
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -28; }
+}
+.road-dash {
+  stroke-dasharray: 14 14;
+  animation: dash-flow 1.6s linear infinite;
+}
